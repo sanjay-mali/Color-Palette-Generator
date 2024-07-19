@@ -91,43 +91,121 @@ function generateTriadic(color) {
 function generateBlackVariants() {
   return [
     "#000000",
-    "#111111",
-    "#222222",
+    "#1A1110",
+    "#555D50",
+    "#353839",
+    "#253529",
+    "#362819",
+    "#3A3A38",
+    "#2E473B",
+    "#353F3E",
+    "#26282A",
+    "#27251F",
+    "#040200",
+    "#0E0C0A",
+    "#080806",
+    "#0D0907",
+    "#010127",
+    "#4D423E",
+    "#0B0B0B",
+    "#191C27",
+    "#0F0404",
+    "#151922",
+    "#3C4748",
+    "#191C20",
+    "#050301",
+    "#0B0705",
+    "#060606",
+    "#160D08",
+    "#000302",
+    "#0A0B0B",
+    "#100E09",
+    "#020403",
+    "#2C2C2A",
+    "#0B0510",
+    "#343432",
+    "#010B13",
+    "#004242",
+    "#54626F",
+    "#BFAFB2",
+    "#451425",
+    "#354230",
+    "#2C1608",
+    "#2F4F4F",
     "#333333",
-    "#444444",
-    "#555555",
-    "#666666",
-    "#777777",
-    "#888888",
-    "#999999",
-    "#AAAAAA",
-    "#BBBBBB",
-    "#CCCCCC",
-    "#DDDDDD",
-    "#EEEEEE",
+    "#32174D",
+    "#3C341F",
   ];
 }
 
 function generateWhiteVariants() {
   return [
     "#FFFFFF",
+    "#F8F8FF",
     "#F5F5F5",
-    "#EBEBEB",
-    "#E0E0E0",
-    "#D6D6D6",
-    "#CCCCCC",
-    "#C2C2C2",
-    "#B8B8B8",
-    "#ADADAD",
-    "#A3A3A3",
-    "#999999",
-    "#8F8F8F",
-    "#858585",
-    "#7A7A7A",
-    "#707070",
+    "#FEFEFA",
+    "#F5FEFD",
+    "#FFFFF0",
+    "#FFFAF0",
+    "#FFF5EE",
+    "#FFF8DC",
+    "#FDF5E6",
+    "#FFFDD0",
+    "#F5F5DC",
+    "#F1E9D2",
+    "#FAEBD7",
+    "#F7E7CE",
+    "#F0EAD6",
+    "#EFDFBB",
+    "#E3DAC9",
+    "#F3E5AB",
+    "#EEDC82",
+    "#EDEAE0",
+    "#FFFACD",
+    "#F3F2ED",
+    "#F0EEE4",
+    "#FFFAFA",
+    "#FDFCFA",
+    "#ECF3F9",
+    "#F3F0E8",
+    "#F8FBF8",
+    "#F1F9EC",
+    "#F2EBDD",
+    "#FFFFE4",
+    "#FFFCEC",
+    "#F6F1F4",
+    "#EBF5F0",
+    "#EEEEFF",
+    "#EAF4FC",
+    "#F8F9F5",
+    "#DEDDDB",
+    "#EBE4D8",
+    "#EFEDE3",
+    "#E3DFD2",
+    "#EDEFEF",
+    "#E7FEFF",
+    "#E6E8FA",
+    "#E5E4E2",
+    "#FFF8E7",
+    "#FFEBCD",
+    "#FFFFE0",
+    "#F8F8F8",
+    "#EFECE1",
+    "#EDF2F8",
+    "#FCFFF9",
+    "#F2EFE1",
+    "#EDE9DD",
+    "#F4F5F0",
+    "#E1E1DD",
+    "#F1F2EE",
+    "#E9EDF6",
+    "#F0EDDB",
+    "#ECE9E4",
+    "#FBF6F0",
+    "#EDE6D6",
+    "#EDEAE2",
   ];
 }
-
 function updateColor(category) {
   const colorPicker = document.getElementById(
     `colorPicker${capitalizeFirstLetter(category)}`
@@ -204,27 +282,42 @@ function generateColors() {
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
 function getRandomPosition() {
-  return `${Math.random() * 100}vh`;
+  return Math.random() * 100;
 }
 
-function getRandomDuration() {
-  return `${Math.random() * 20 + 5}s`;
+function getRandomVelocity() {
+  return (Math.random() - 0.5) / 20; // Velocity between -1 and 1
 }
+
+const heroSection = document.getElementById("boxes");
 
 function createMovingBox(colorClass) {
   const box = document.createElement("div");
   box.classList.add("moving-box", colorClass);
-  box.style.setProperty("--start-x", getRandomPosition());
-  box.style.setProperty("--start-y", getRandomPosition());
-  box.style.setProperty("--end-x", getRandomPosition());
-  box.style.setProperty("--end-y", getRandomPosition());
-  box.style.animationDuration = getRandomDuration();
   document.body.appendChild(box);
+
+  let x = getRandomPosition();
+  let y = getRandomPosition();
+  let vx = getRandomVelocity();
+  let vy = getRandomVelocity();
+
+  function move() {
+    x += vx;
+    y += vy;
+
+    if (x <= 0 || x >= 100) vx *= -1;
+    if (y <= 0 || y >= 100) vy *= -1;
+
+    box.style.transform = `translate(${x}vw, ${y}vh)`;
+    requestAnimationFrame(move);
+  }
+
+  move();
 }
+
 const colors = ["primary-box", "secondary-box", "accent-box"];
-for (let i = 0; i < 8; i++) {
-  const colorClass = colors[i % colors.length];
+for (let i = 0; i < 20; i++) {
+  const colorClass = colors[Math.floor(Math.random() * colors.length)];
   createMovingBox(colorClass);
 }
