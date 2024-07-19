@@ -11,6 +11,7 @@
     />
   </head>
   <body>
+    <div id="boxes"></div>
     <div class="hero-section">
       <div>
         <h1>Color Palette Generator</h1>
@@ -25,7 +26,17 @@
           Colors" button to generate a color scheme.
         </p>
         <div class="button-group">
-          <a href="#how-it-works" class="how-it-works">How It Works</a>
+          <a
+            href="https://github.com/sanjay-mali/Color-Palette-Generator"
+            class="how-it-works"
+            target="_blank"
+            >Souce Code
+
+            <img
+              src="https://img.icons8.com/?size=30&id=62856&format=png&color=000000"
+              alt=""
+            />
+          </a>
           <a href="#get-started" class="get-started">Get Started</a>
         </div>
       </div>
@@ -100,10 +111,10 @@
           <option value="triadic">Triadic</option>
         </select>
         <button onclick="generateColors()">Generate Colors</button>
+        <button onclick="downloadParameters()">Download Parameters</button>
       </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="main.js"></script>
   </body>
 </html>
