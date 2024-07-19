@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Palette Generator</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="hero-section">
+      <div>
+        <h1>Color Palette Generator</h1>
+        <p>
+          Generate a color palette using the color picker or generate a color
+          scheme using the color wheel.<br />
+          Click on the lock icon to lock a color in place. Click on the color
+          box to unlock it.<br />
+          Select a color harmony from the dropdown menu and click the "Generate
+          Palette" button to generate a color palette.<br />
+          Select a color scheme from the dropdown menu and click the "Generate
+          Colors" button to generate a color scheme.
+        </p>
+        <div class="button-group">
+          <a href="#how-it-works" class="how-it-works">How It Works</a>
+          <a href="#get-started" class="get-started">Get Started</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-bg">
+      <div class="toolbar">
+        <div class="color-box" id="text" style="background-color: var(--text)">
+          Text
+          <input
+            type="color"
+            id="colorPickerText"
+            onchange="updateColor('text')"
+          />
+        </div>
+        <div
+          class="color-box"
+          id="background"
+          style="background-color: var(--background)"
+        >
+          Background
+          <input
+            type="color"
+            id="colorPickerBackground"
+            onchange="updateColor('background')"
+          />
+        </div>
+        <div
+          class="color-box"
+          id="primary"
+          style="background-color: var(--primary)"
+        >
+          Primary
+          <input
+            type="color"
+            id="colorPickerPrimary"
+            onchange="updateColor('primary')"
+          />
+        </div>
+        <div
+          class="color-box"
+          id="secondary"
+          style="background-color: var(--secondary)"
+        >
+          Secondary
+          <input
+            type="color"
+            id="colorPickerSecondary"
+            onchange="updateColor('secondary')"
+          />
+        </div>
+        <div
+          class="color-box"
+          id="accent"
+          style="background-color: var(--accent)"
+        >
+          Accent
+          <input
+            type="color"
+            id="colorPickerAccent"
+            onchange="updateColor('accent')"
+          />
+        </div>
+      </div>
+      <div class="controls">
+        <select id="colorScheme" onchange="generateColors()">
+          <option value="all">All</option>
+          <option value="monochromatic">Monochromatic</option>
+          <option value="analogous">Analogous</option>
+          <option value="complementary">Complementary</option>
+          <option value="splitComplementary">Split Complementary</option>
+          <option value="triadic">Triadic</option>
+        </select>
+        <button onclick="generateColors()">Generate Colors</button>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,302 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 20px;
+  color: var(--text);
+  background-color: var(--background);
+  z-index: 9999;
+  height: 100vh;
+  overflow: hidden;
+}
+
+:root {
+  --static: rgba(225, 225, 225, 0.5);
+  --static4: rgba(225, 225, 225, 0.2);
+  --static3: #ffffff;
+  --static2: #0f0f0f;
+  --primary: #000000;
+  --secondary: #ffffff;
+  --primbuttn: #4685ff;
+  --secbuttn: #f2f2f2;
+  --accent: #ffb084;
+  --text: #000000;
+  --background: #ffffff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hero-section {
+  text-align: center;
+  padding: 20px;
+  z-index: 1;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+}
+
+.hero-section h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--primary);
+}
+
+.hero-section p {
+  font-size: 1.2em;
+  max-width: 600px;
+  line-height: 1.5;
+  margin: 0 auto;
+}
+
+.moving-box {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  border-radius: 15px;
+  animation: move linear infinite;
+  opacity: 0.8;
+}
+.button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.button-group a {
+  text-decoration: none;
+  padding: 1rem;
+  font-size: 1em;
+  color: #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.button-group a.how-it-works {
+  background-color: var(--secondary);
+}
+
+.button-group a.get-started {
+  background-color: var(--primary);
+}
+
+.primary-box {
+  background-color: var(--primary);
+}
+
+.secondary-box {
+  background-color: var(--secondary);
+}
+
+.accent-box {
+  background-color: var(--accent);
+}
+
+@keyframes move {
+  0% {
+    transform: translate(var(--start-x), var(--start-y));
+  }
+  100% {
+    transform: translate(var(--end-x), var(--end-y));
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2em;
+  }
+  .hero-section p {
+    font-size: 1em;
+  }
+  .moving-box {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section h1 {
+    font-size: 1.5em;
+  }
+  .hero-section p {
+    font-size: 0.9em;
+  }
+  .moving-box {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.palette,
+.text-background {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+.color {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  border: 2px solid #000;
+  padding: 10px;
+}
+.color input {
+  width: 100px;
+  position: absolute;
+  bottom: 10px;
+  opacity: 0;
+  cursor: pointer;
+}
+.lock {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+.lock:before {
+  content: "🔓";
+}
+.lock.locked:before {
+  content: "🔒";
+}
+.colorCode {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  color: #333;
+}
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+button,
+select {
+  padding: 1.1rem 1.5rem;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button-bg {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.789rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
+  z-index: 999;
+
+  & button {
+    padding: 1.1rem 1.5rem;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+    color: #000;
+    &:hover {
+      background-color: #000;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .color {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* ------------------ */
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  color: #fff;
+}
+.color-box {
+  width: 100px;
+  height: 50px;
+  border: 2px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.color-box input {
+  width: 80px;
+  height: 40px;
+  opacity: 0;
+  position: absolute;
+  cursor: pointer;
+}
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+
+.hero {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 6em;
+  gap: 3em;
+}
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3em;
+  width: 50%;
+}
+
+.hero-cta {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+.hero-scroll {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  align-items: center;
+  font-size: 16px;
+}
+
+.mondrian {
+  max-width: 100%;
+}
+
+.hero-img {
+  width: 50%;
+}
