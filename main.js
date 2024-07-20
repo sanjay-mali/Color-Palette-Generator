@@ -1,93 +1,3 @@
-const colorCategories = [
-  "primary",
-  "secondary",
-  "accent",
-  "text",
-  "background",
-];
-
-function getRandomColor() {
-  const randomColor = Math.floor(Math.random() * 16777215).toString(16);
-  return `#${randomColor.padStart(6, "0")}`;
-}
-
-function hexToRgb(hex) {
-  const bigint = parseInt(hex.slice(1), 16);
-  const r = (bigint >> 16) & 255;
-  const g = (bigint >> 8) & 255;
-  const b = bigint & 255;
-  return { r, g, b };
-}
-
-function rgbToHex(r, g, b) {
-  return (
-    "#" +
-    ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()
-  );
-}
-
-function generateMonochromatic(color) {
-  const rgb = hexToRgb(color);
-  const variations = [rgb];
-  for (let i = 1; i < 5; i++) {
-    const factor = 1 - i * 0.15;
-    variations.push({
-      r: Math.round(rgb.r * factor),
-      g: Math.round(rgb.g * factor),
-      b: Math.round(rgb.b * factor),
-    });
-  }
-  return variations.map((c) => rgbToHex(c.r, c.g, c.b));
-}
-
-function generateAnalogous(color) {
-  const rgb = hexToRgb(color);
-  return [
-    color,
-    rgbToHex((rgb.r + 30) % 255, (rgb.g + 30) % 255, (rgb.b + 30) % 255),
-    rgbToHex((rgb.r + 60) % 255, (rgb.g + 60) % 255, (rgb.b + 60) % 255),
-    rgbToHex((rgb.r + 90) % 255, (rgb.g + 90) % 255, (rgb.b + 90) % 255),
-    rgbToHex((rgb.r + 120) % 255, (rgb.g + 120) % 255, (rgb.b + 120) % 255),
-  ];
-}
-
-function generateComplementary(color) {
-  const rgb = hexToRgb(color);
-  return [
-    color,
-    rgbToHex(255 - rgb.r, 255 - rgb.g, 255 - rgb.b),
-    rgbToHex((rgb.r + 60) % 255, (rgb.g + 60) % 255, (rgb.b + 60) % 255),
-    rgbToHex(
-      (255 - rgb.r + 60) % 255,
-      (255 - rgb.g + 60) % 255,
-      (255 - rgb.b + 60) % 255
-    ),
-    rgbToHex((rgb.r + 120) % 255, (rgb.g + 120) % 255, (rgb.b + 120) % 255),
-  ];
-}
-
-function generateSplitComplementary(color) {
-  const rgb = hexToRgb(color);
-  return [
-    color,
-    rgbToHex(255 - rgb.r, 255 - rgb.g, 255 - rgb.b),
-    rgbToHex((rgb.r + 120) % 255, rgb.g, (rgb.b + 120) % 255),
-    rgbToHex(rgb.r, (rgb.g + 120) % 255, (rgb.b + 120) % 255),
-    rgbToHex((rgb.r + 60) % 255, (rgb.g + 60) % 255, (rgb.b + 60) % 255),
-  ];
-}
-
-function generateTriadic(color) {
-  const rgb = hexToRgb(color);
-  return [
-    color,
-    rgbToHex((rgb.r + 120) % 255, rgb.g, (rgb.b + 120) % 255),
-    rgbToHex(rgb.r, (rgb.g + 120) % 255, (rgb.b + 120) % 255),
-    rgbToHex((rgb.r + 120) % 255, (rgb.g + 120) % 255, rgb.b),
-    rgbToHex((rgb.r + 60) % 255, (rgb.g + 60) % 255, (rgb.b + 60) % 255),
-  ];
-}
-
 function generateBlackVariants() {
   return [
     "#000000",
@@ -206,6 +116,98 @@ function generateWhiteVariants() {
     "#EDEAE2",
   ];
 }
+
+const colorCategories = [
+  "primary",
+  "secondary",
+  "accent",
+  "text",
+  "background",
+];
+let lockedColors = [];
+
+function getRandomColor() {
+  const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+  return `#${randomColor.padStart(6, "0")}`;
+}
+
+function hexToRgb(hex) {
+  const bigint = parseInt(hex.slice(1), 16);
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
+  return { r, g, b };
+}
+
+function rgbToHex(r, g, b) {
+  return (
+    "#" +
+    ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()
+  );
+}
+
+function generateMonochromatic(color) {
+  const rgb = hexToRgb(color);
+  const variations = [rgb];
+  for (let i = 1; i < 5; i++) {
+    const factor = 1 - i * 0.15;
+    variations.push({
+      r: Math.round(rgb.r * factor),
+      g: Math.round(rgb.g * factor),
+      b: Math.round(rgb.b * factor),
+    });
+  }
+  return variations.map((c) => rgbToHex(c.r, c.g, c.b));
+}
+
+function generateAnalogous(color) {
+  const rgb = hexToRgb(color);
+  return [
+    color,
+    rgbToHex((rgb.r + 30) % 255, (rgb.g + 30) % 255, (rgb.b + 30) % 255),
+    rgbToHex((rgb.r + 60) % 255, (rgb.g + 60) % 255, (rgb.b + 60) % 255),
+    rgbToHex((rgb.r + 90) % 255, (rgb.g + 90) % 255, (rgb.b + 90) % 255),
+    rgbToHex((rgb.r + 120) % 255, (rgb.g + 120) % 255, (rgb.b + 120) % 255),
+  ];
+}
+
+function generateComplementary(color) {
+  const rgb = hexToRgb(color);
+  return [
+    color,
+    rgbToHex(255 - rgb.r, 255 - rgb.g, 255 - rgb.b),
+    rgbToHex((rgb.r + 60) % 255, (rgb.g + 60) % 255, (rgb.b + 60) % 255),
+    rgbToHex(
+      (255 - rgb.r + 60) % 255,
+      (255 - rgb.g + 60) % 255,
+      (255 - rgb.b + 60) % 255
+    ),
+    rgbToHex((rgb.r + 120) % 255, (rgb.g + 120) % 255, (rgb.b + 120) % 255),
+  ];
+}
+
+function generateSplitComplementary(color) {
+  const rgb = hexToRgb(color);
+  return [
+    color,
+    rgbToHex(255 - rgb.r, 255 - rgb.g, 255 - rgb.b),
+    rgbToHex((rgb.r + 120) % 255, rgb.g, (rgb.b + 120) % 255),
+    rgbToHex(rgb.r, (rgb.g + 120) % 255, (rgb.b + 120) % 255),
+    rgbToHex((rgb.r + 60) % 255, (rgb.g + 60) % 255, (rgb.b + 60) % 255),
+  ];
+}
+
+function generateTriadic(color) {
+  const rgb = hexToRgb(color);
+  return [
+    color,
+    rgbToHex((rgb.r + 120) % 255, rgb.g, (rgb.b + 120) % 255),
+    rgbToHex(rgb.r, (rgb.g + 120) % 255, (rgb.b + 120) % 255),
+    rgbToHex((rgb.r + 120) % 255, (rgb.g + 120) % 255, rgb.b),
+    rgbToHex((rgb.r + 60) % 255, (rgb.g + 60) % 255, (rgb.b + 60) % 255),
+  ];
+}
+
 function updateColor(category) {
   const colorPicker = document.getElementById(
     `colorPicker${capitalizeFirstLetter(category)}`
@@ -266,10 +268,12 @@ function generateColors() {
     } else {
       color = colors[index % colors.length];
     }
+
     document.getElementById(category).style.backgroundColor = color;
     document.getElementById(
       `colorPicker${capitalizeFirstLetter(category)}`
     ).value = color;
+
     document.documentElement.style.setProperty(`--${category}`, color);
     if (category === "text") {
       document.body.style.color = color;
@@ -287,7 +291,33 @@ function getRandomPosition() {
 }
 
 function getRandomVelocity() {
-  return (Math.random() - 0.5) / 20; // Velocity between -1 and 1
+  return (Math.random() - 0.5) / 20;
+}
+function savePalette() {
+  const colors = Array.from(document.querySelectorAll(".color-box")).map(
+    (box) => box.style.backgroundColor
+  );
+  localStorage.setItem("savedPalette", JSON.stringify(colors));
+  alert("Palette saved!");
+}
+
+function sharePalette() {
+  const palette = colorCategories.reduce((acc, category) => {
+    const color = getComputedStyle(document.documentElement)
+      .getPropertyValue(`--${category}`)
+      .trim();
+    acc[category] = color;
+    return acc;
+  }, {});
+
+  const colorString = Object.entries(palette)
+    .map(([category, color]) => `${category}=${encodeURIComponent(color)}`)
+    .join("&");
+
+  const url = `${window.location.origin}${window.location.pathname}?${colorString}`;
+  navigator.clipboard.writeText(url).then(() => {
+    alert("Palette URL copied to clipboard!");
+  });
 }
 
 const heroSection = document.getElementById("boxes");
@@ -321,3 +351,7 @@ for (let i = 0; i < 20; i++) {
   const colorClass = colors[Math.floor(Math.random() * colors.length)];
   createMovingBox(colorClass);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  generateColors();
+});
