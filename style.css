@@ -282,11 +282,10 @@ select {
 .button-bg {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.789rem;
   justify-content: center;
   align-items: center;
   width: 100%;
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   z-index: 999;
   & button {
@@ -302,6 +301,8 @@ select {
   display: flex;
   gap: 10px;
   color: #fff;
+  background-color: rgba(255, 182, 193, 0.5);
+  padding: 0.789rem;
 }
 .color-box {
   width: 100px;
@@ -324,6 +325,8 @@ select {
 .controls {
   display: flex;
   gap: 10px;
+  background-color: rgba(255, 182, 193, 0.5);
+  padding: 0.780rem;
 }
 
 .box {
