@@ -370,3 +370,11 @@ for (let i = 0; i < 20; i++) {
 document.addEventListener("DOMContentLoaded", () => {
   generateColors();
 });
+let lastScrollTop = 0;
+const navbar = document.getElementById("navbar");
+const navbarToggle = document.getElementById("navbar-toggle");
+const navbarMenu = document.getElementById("navbar-menu");
+
+navbarToggle.addEventListener("click", () => {
+  navbarMenu.classList.toggle("active");
+});
