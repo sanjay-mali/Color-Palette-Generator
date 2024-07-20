@@ -298,7 +298,15 @@ function savePalette() {
     (box) => box.style.backgroundColor
   );
   localStorage.setItem("savedPalette", JSON.stringify(colors));
-  alert("Palette saved!");
+  Toastify({
+    text: "Palette saved!",
+    duration: 3000,
+    gravity: "top",
+    position: "center",
+    close: true,
+    backgroundColor:
+      "linear-gradient(to left, var(--primary), var(--secondary))",
+  }).showToast();
 }
 
 function sharePalette() {
@@ -316,7 +324,14 @@ function sharePalette() {
 
   const url = `${window.location.origin}${window.location.pathname}?${colorString}`;
   navigator.clipboard.writeText(url).then(() => {
-    alert("Palette URL copied to clipboard!");
+    Toastify({
+      text: "Palette URL copied to clipboard!",
+      duration: 3000,
+      close: true,
+      gravity: "top", // `top` or `bottom`
+      position: "center", // `left`, `center` or `right`
+      backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+    }).showToast();
   });
 }
 
