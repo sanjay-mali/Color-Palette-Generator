@@ -9,6 +9,11 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
   </head>
   <body>
     <div id="boxes"></div>
@@ -111,10 +116,16 @@
           <option value="triadic">Triadic</option>
         </select>
         <button onclick="generateColors()">Generate Colors</button>
-        <button onclick="downloadParameters()">Download Parameters</button>
+        <button onclick="savePalette()">Save Palette</button>
+        <button onclick="sharePalette()">Share Palette</button>
       </div>
+      <div class="palette"></div>
     </div>
 
     <script src="main.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
   </body>
 </html>
