@@ -304,6 +304,9 @@ select {
   background-color: rgba(255, 182, 193, 0.5);
   padding: 0.789rem;
 }
+.how-it-works{
+  transition: transform ease 0.2s;
+}
 .color-box {
   width: 100px;
   outline: none;
