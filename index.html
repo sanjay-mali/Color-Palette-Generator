@@ -20,7 +20,6 @@
       <nav id="navbar" class="navbar">
         <div class="navbar-container">
           <a href="#" class="navbar-logo">
-            <!-- Insert SVG logo here -->
             <svg
               id="logo"
               xmlns="http://www.w3.org/2000/svg"
@@ -87,17 +86,20 @@
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
-        </div>
+          </div>
           <ul class="navbar-menu" id="navbar-menu">
             <li><a href="#home">Home</a></li>
-            <li><a  class="how-it-works" href="#how-it-work">How it Work?</a></li>
+            <li>
+              <a class="how-it-works" href="#how-it-work">How it Work?</a>
+            </li>
             <li><a href="#saved">Saved Palette</a></li>
             <li>
               <a
-              href="https://github.com/sanjay-mali/Color-Palette-Generator"
-              class="how-it-works"
-              style="transition: all 1s ease;"
-              >Souce Code</a>
+                href="https://github.com/sanjay-mali/Color-Palette-Generator"
+                class="how-it-works"
+                style=" background-color: var(--primary); padding: 10px; border-radius: 5px; "
+                >Github</a
+              >
             </li>
           </ul>
         </div>
@@ -113,13 +115,7 @@
             to explore and create the perfect palette for any project.
           </p>
           <div class="button-group">
-            <a
-              href="#how-it-work"
-              <a href="#how-it-work" class="how-it-works"></a>
-              >How it Works?
-
-              />
-            </a>
+            <a href="#how-it-work" class="how-it-works"> How it Works? </a>
             <a href="#get-started" class="get-started">Get Started</a>
           </div>
         </div>
@@ -202,62 +198,153 @@
           <button onclick="sharePalette()">Share Palette</button>
         </div>
       </div>
-    </div>
     </section>
 
     <section id="how-it-work">
-        <div class="container" style="display: flex; height: 100%; width: 80%; margin: auto; align-items: center; justify-content: center; color: #fff;">
-          <div class="grid" style="display: grid; height: 80%; width: 100%; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 1fr); gap: 16px; background-color: #eee; padding: 8px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.1);">
-          
-            <div 
-              style="font-family: 'M PLUS 2 Variable', sans-serif; grid-column: span 2; grid-row: span 1; background-color: var(--p); border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.1); display: flex; align-items: center; justify-content: center;"
-            >
-              <h1>How Does it Work?</h1>
-            </div>
-          
-            <div 
-              style="font-family: 'M PLUS 2 Variable', sans-serif; grid-column: span 1; grid-row: span 1; background-color: var(--accent); border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.1); display: flex; align-items: center; justify-content: center;"
-            >
+      <div
+        class="container"
+        style="
+          display: flex;
+          height: 100%;
+          width: 80%;
+          margin: auto;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+        "
+      >
+        <div
+          class="grid"
+          style="
+            display: grid;
+            height: 80%;
+            width: 100%;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 16px;
+            color: var(--text);
+            background-color: #eee;
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25),
+              0 1px 2px rgba(0, 0, 0, 0.1);
+          "
+        >
+          <div
+            style="
+              font-family: 'M PLUS 2 Variable', sans-serif;
+              grid-column: span 2;
+              grid-row: span 1;
+              background-color: var(--primary);
+              border-radius: 8px;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25),
+                0 1px 2px rgba(0, 0, 0, 0.1);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <h1>How Does it Work?</h1>
+          </div>
+
+          <div
+            style="
+              font-family: 'M PLUS 2 Variable', sans-serif;
+              grid-column: span 1;
+              grid-row: span 1;
+              background-color: rgba(255, 182, 193, 0.5);
+              border-radius: 8px;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25),
+                0 1px 2px rgba(0, 0, 0, 0.1);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
             <div class="item">
-              
               <h2>1. Color Scheme Selection</h2>
-              
-              <p>Choose from various color schemes to generate your palette, including Monochromatic, Analogous, Complementary, Split Complementary, and Triadic.</p>
+
+              <p>
+                Choose from various color schemes to generate your palette,
+                including Monochromatic, Analogous, Complementary, Split
+                Complementary, and Triadic.
+              </p>
             </div>
-          
-            </div>
-          
-            <div 
-              style="font-family: 'M PLUS 2 Variable', sans-serif; grid-column: span 1; grid-row: span 1; background-color:var(--secondary); border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.1); display: flex; align-items: center; justify-content: center;"
-            >
+          </div>
+
+          <div
+            style="
+              font-family: 'M PLUS 2 Variable', sans-serif;
+              grid-column: span 1;
+              grid-row: span 1;
+              background-color: rgba(173, 255, 47, 0.5);
+              border-radius: 8px;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25),
+                0 1px 2px rgba(0, 0, 0, 0.1);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
             <div class="item">
               <h2>2. Generate Your Palette</h2>
-              <p>Click the “Generate” button to create a fresh set of colors based on your selected scheme. The tool will produce a variety of color options that you can preview and choose from.</p>
-              
+              <p>
+                Click the “Generate” button to create a fresh set of colors
+                based on your selected scheme. The tool will produce a variety
+                of color options that you can preview and choose from.
+              </p>
             </div>
           </div>
-          
-            <div 
-              style="font-family: 'M PLUS 2 Variable', sans-serif; grid-column: span 1; grid-row: span 1; background-color: var(--secondary); border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.1); display: flex; align-items: center; justify-content: center;"
-            >
+
+          <div
+            style="
+              font-family: 'M PLUS 2 Variable', sans-serif;
+              grid-column: span 1;
+              grid-row: span 1;
+              background-color: #eee;
+              border-radius: 8px;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25),
+                0 1px 2px rgba(0, 0, 0, 0.1);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
             <div class="item">
               <h2>3. Interactive Features</h2>
-              <p>Save your favorite palettes for future use, and share them with others using a shareable URL. The colors update in real-time as you interact with the tool.</p>
+              <p>
+                Save your favorite palettes for future use, and share them with
+                others using a shareable URL. The colors update in real-time as
+                you interact with the tool.
+              </p>
             </div>
-              
           </div>
-          
-            <div 
-              style="font-family: 'M PLUS 2 Variable', sans-serif; grid-column: span 1; grid-row: span 1; background-color:var(--accent); border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.1); display: flex; align-items: center; justify-content: center;"
-            >
+
+          <div
+            style="
+              font-family: 'M PLUS 2 Variable', sans-serif;
+              grid-column: span 1;
+              grid-row: span 1;
+              background-color: rgba(210, 180, 140, 0.5);
+              border-radius: 8px;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25),
+                0 1px 2px rgba(0, 0, 0, 0.1);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
             <div class="item">
               <h2>4. Customizable Output</h2>
-              <p>Adjust and fine-tune your palette to match your needs. Our tool provides the flexibility to create a palette that fits perfectly with your design vision.</p>
-              
-            </div>
+              <p>
+                Adjust and fine-tune your palette to match your needs. Our tool
+                provides the flexibility to create a palette that fits perfectly
+                with your design vision.
+              </p>
             </div>
           </div>
         </div>
+      </div>
     </section>
 
     <script src="main.js"></script>
