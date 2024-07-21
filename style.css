@@ -49,6 +49,7 @@ section {
   z-index: 1000;
   overflow: hidden;
   transition: top 0.3s;
+  z-index: 99999;
 }
 
 .navbar-container {
@@ -95,7 +96,7 @@ section {
 }
 
 .navbar-menu a:hover {
-  color: #f0f0f0;
+  color: var(--secondary);
 }
 
 /* Hamburger Toggle */
