@@ -362,7 +362,7 @@ function createMovingBox(colorClass) {
 }
 
 const colors = ["primary-box", "secondary-box", "accent-box"];
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 10; i++) {
   const colorClass = colors[Math.floor(Math.random() * colors.length)];
   createMovingBox(colorClass);
 }
