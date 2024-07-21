@@ -297,7 +297,20 @@ function savePalette() {
   const colors = Array.from(document.querySelectorAll(".color-box")).map(
     (box) => box.style.backgroundColor
   );
-  localStorage.setItem("savedPalette", JSON.stringify(colors));
+
+  const palette = {
+    text: colors[0],
+    background: colors[1],
+    primary: colors[2],
+    secondary: colors[3],
+    accent: colors[4],
+  };
+
+  let savedPalettes = JSON.parse(localStorage.getItem("savedPalettes")) || [];
+  savedPalettes.push(palette);
+  localStorage.setItem("savedPalettes", JSON.stringify(savedPalettes));
+
+  console.log("Saved Palette:", palette);
   Toastify({
     text: "Palette saved!",
     duration: 3000,
@@ -328,8 +341,8 @@ function sharePalette() {
       text: "Palette URL copied to clipboard!",
       duration: 3000,
       close: true,
-      gravity: "top", // `top` or `bottom`
-      position: "center", // `left`, `center` or `right`
+      gravity: "top",
+      position: "center",
       backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
     }).showToast();
   });
@@ -369,6 +382,7 @@ for (let i = 0; i < 10; i++) {
 
 document.addEventListener("DOMContentLoaded", () => {
   generateColors();
+  loadPalettes();
 });
 let lastScrollTop = 0;
 const navbar = document.getElementById("navbar");
@@ -378,3 +392,71 @@ const navbarMenu = document.getElementById("navbar-menu");
 navbarToggle.addEventListener("click", () => {
   navbarMenu.classList.toggle("active");
 });
+
+function loadPalettes() {
+  const savedPalettes = JSON.parse(localStorage.getItem("savedPalettes")) || [];
+  const paletteGrid = document.getElementById("paletteGrid");
+  paletteGrid.innerHTML = "";
+  savedPalettes.forEach((palette, index) => {
+    const paletteCard = document.createElement("div");
+    paletteCard.className = "palette-card";
+    rgbToHex(palette[0], palette[1], palette[2]);
+    console.log(palette.text);
+    const colorPreview = document.createElement("div");
+    colorPreview.className = "color-preview";
+
+    const colorInfo = document.createElement("div");
+    colorInfo.className = "color-info";
+    colorInfo.innerHTML = `
+      <p><strong>Text:</strong> ${palette.text}</p>
+      <p><strong>Background:</strong> ${palette.background}</p>
+      <p><strong>Primary:</strong> ${palette.primary}</p>
+      <p><strong>Secondary:</strong> ${palette.secondary}</p>
+      <p><strong>Accent:</strong> ${palette.accent}</p>
+    `;
+
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "delete-button";
+    deleteButton.textContent = "Delete";
+    deleteButton.onclick = () => deletePalette(index);
+
+    const shareButton = document.createElement("button");
+    shareButton.className = "share-button";
+    shareButton.textContent = "Share";
+    shareButton.onclick = () => sharePalette(index);
+
+    paletteCard.appendChild(colorInfo);
+    paletteCard.appendChild(deleteButton);
+    paletteCard.appendChild(shareButton);
+
+    paletteGrid.appendChild(paletteCard);
+  });
+}
+
+function deletePalette(index) {
+  let savedPalettes = JSON.parse(localStorage.getItem("savedPalettes")) || [];
+  savedPalettes.splice(index, 1);
+  localStorage.setItem("savedPalettes", JSON.stringify(savedPalettes));
+  loadPalettes();
+}
+
+function sharePalette(index) {
+  const savedPalettes = JSON.parse(localStorage.getItem("savedPalettes")) || [];
+  const palette = savedPalettes[index];
+
+  const colorString = Object.entries(palette)
+    .map(([category, color]) => `${category}=${encodeURIComponent(color)}`)
+    .join("&");
+
+  const url = `${window.location.origin}${window.location.pathname}?${colorString}`;
+  navigator.clipboard.writeText(url).then(() => {
+    Toastify({
+      text: "Palette URL copied to clipboard!",
+      duration: 3000,
+      close: true,
+      gravity: "top",
+      position: "center",
+      backgroundColor: "linear-gradient(to right,var(--primary),var(--secondary)",
+    }).showToast();
+  });
+}
