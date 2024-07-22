@@ -310,7 +310,6 @@ function savePalette() {
   savedPalettes.push(palette);
   localStorage.setItem("savedPalettes", JSON.stringify(savedPalettes));
 
-  console.log("Saved Palette:", palette);
   Toastify({
     text: "Palette saved!",
     duration: 3000,
@@ -408,7 +407,6 @@ function loadPalettes() {
     const paletteCard = document.createElement("div");
     paletteCard.className = "palette-card";
     rgbToHex(palette[0], palette[1], palette[2]);
-    console.log(palette.text);
     const colorPreview = document.createElement("div");
     colorPreview.className = "color-preview";
 
