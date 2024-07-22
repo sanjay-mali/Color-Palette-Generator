@@ -397,6 +397,13 @@ function loadPalettes() {
   const savedPalettes = JSON.parse(localStorage.getItem("savedPalettes")) || [];
   const paletteGrid = document.getElementById("paletteGrid");
   paletteGrid.innerHTML = "";
+  if (savedPalettes.length === 0) {
+    const emptyState = document.createElement("p");
+    emptyState.textContent = "No saved palettes yet!";
+    emptyState.className = "empty-state";
+    paletteGrid.appendChild(emptyState);
+    return;
+  }
   savedPalettes.forEach((palette, index) => {
     const paletteCard = document.createElement("div");
     paletteCard.className = "palette-card";
@@ -456,7 +463,8 @@ function sharePalette(index) {
       close: true,
       gravity: "top",
       position: "center",
-      backgroundColor: "linear-gradient(to right,var(--primary),var(--secondary)",
+      backgroundColor:
+        "linear-gradient(to right,var(--primary),var(--secondary)",
     }).showToast();
   });
 }

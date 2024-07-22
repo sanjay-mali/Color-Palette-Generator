@@ -132,7 +132,9 @@ section {
     left: 0;
     padding: 10px 0;
   }
-
+  .navbar-menu:has(.active) .navbar-toggle {
+    rotate: 45deg;
+  }
   .navbar-menu.active {
     display: flex;
     transition: 1s all ease;
@@ -559,4 +561,10 @@ select {
   margin-top: 5rem;
   max-width: 1200px;
   margin: 5rem auto 2rem auto;
+}
+.empty-state{
+  font-size: 5vh;
+  text-align: center;
+  margin-top: 5vh;
+  
 }
