@@ -35,19 +35,20 @@ section {
   min-height: 100vh;
 }
 .container {
-  max-width: 1200px;
+  max-width: 1180px;
 }
 /* Navbar */
 
 .navbar {
-  background-color: var(--background);
   color: var(--text);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px 0;
-  box-shadow: var(--secondary) 0px 0px 2px;
   top: 0;
+  position: fixed;
+  padding-top: 1rem;
+  width: 100%;
   z-index: 1000;
   overflow: hidden;
   transition: top 0.3s;
@@ -171,12 +172,11 @@ section {
 
 .hero-section {
   text-align: center;
-  padding: 20px;
   max-width: 1180px;
   z-index: 1;
   position: relative;
   width: 100%;
-  height: calc(10px - 20px + 100vh);
+  height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -186,7 +186,7 @@ section {
 .hero-section h1 {
   font-size: 3vw;
   margin-bottom: 20px;
-  text-align: center;
+  text-align: left;
   color: var(--primary);
 }
 
@@ -201,6 +201,7 @@ section {
   width: 80px;
   height: 80px;
   position: absolute;
+  z-index: -1;
   left: 0;
   border-radius: 15px;
   animation: bounce var(--animation-duration) infinite linear;
